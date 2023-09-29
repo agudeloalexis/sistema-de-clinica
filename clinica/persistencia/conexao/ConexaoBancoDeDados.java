@@ -39,4 +39,21 @@ public class ConexaoBancoDeDados {
         this.connection.close();
     }
 
+    public void deletarPasciente(int codigo) {
+        String query = "DELETE FROM pasciente WHERE codigo = " + codigo;
+        executaDelete(query);
+    }
+    public void deletarAluno(String nome) {
+        String query = "DELETE FROM pasciente WHERE nome LIKE '%" + nome + "%'";
+        executaDelete(query);
+    }
+    public void executaDelete(String consultaDeDelete){
+        try {
+            this.connection.createStatement().executeUpdate(consultaDeDelete);
+            System.out.println("Pasciente deletado com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
